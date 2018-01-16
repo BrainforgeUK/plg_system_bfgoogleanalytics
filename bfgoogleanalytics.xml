@@ -7,7 +7,7 @@
 * @license	 GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 -->
 <extension type="plugin" version="1.6.0" group="system" method="upgrade">
-  <name>Brainforge, Google Analytics</name>
+  <name>System - Google Analytics by BrainforgeUK</name>
   <creationDate>13 December 2011</creationDate>
   <author>Jonathan Brain</author>
   <authorEmail>brainforge@btinternet.com</authorEmail>
@@ -100,6 +100,6 @@ without having to publish / unpublish this plugin every time. Do not include the
   </config>
 
   <updateservers>
-      <server type="extension" priority="1" name="Brainforge, Google Analytics">https://brainforge.co.uk/media/com_bfupdater/plg_bfgoogleanalytics.xml</server>
+      <server type="extension" priority="1" name="System - Google Analytics by BrainforgeUK">https://brainforge.co.uk/media/com_bfupdater/plg_bfgoogleanalytics.xml</server>
   </updateservers>
 </extension>
