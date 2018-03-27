@@ -7,101 +7,67 @@
 * @license	 GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 -->
 <extension type="plugin" version="1.6.0" group="system" method="upgrade">
-  <name>System - Google Analytics by BrainforgeUK</name>
-  <creationDate>13 December 2011</creationDate>
-  <author>Jonathan Brain</author>
-  <authorEmail>brainforge@btinternet.com</authorEmail>
-  <authorUrl>http://www.brainforge.co.uk</authorUrl>
-  <copyright>Copyright 2011-2018 Jonathan Brain. All rights reserved.</copyright>
-  <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-  <version>4.0.1</version>
-  <description>Plugin for adding Google Analytics to site.</description>
+	<name>PLG_SYSTEM_BFGOOGLEANALYTICS</name>
+	<creationDate>13 December 2011</creationDate>
+	<author>Jonathan Brain</author>
+	<authorEmail>brainforge@btinternet.com</authorEmail>
+	<authorUrl>http://www.brainforge.co.uk</authorUrl>
+	<copyright>Copyright 2011-2018 Jonathan Brain. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>4.0.2</version>
+	<description>PLG_SYSTEM_BFGOOGLEANALYTICS_XML_DESCRIPTION</description>
 
 	<files>
 		<filename plugin="bfgoogleanalytics">bfgoogleanalytics.php</filename>
-    <filename>bfgoogleanalytics.xml</filename>
+		<filename>bfgoogleanalytics.xml</filename>
+		<folder>fields</folder>
+		<folder>images</folder>
 	</files>
 
-  <config>
-    <fields name="params">
-    <fieldset name="basic">
-			<field name="googleUAID" type="text" default="UA-0000000"
-				label="Google ID"
-				description="ID in your Google Analytics code for example: UA-1234567.">
-			</field>
-      
-			<field name="domainName" type="text" default=""
-				label="Domain Name"
-				description="If you are using subdomains with your site enter the domain name of your site.&lt;br /&gt;
-I.E without the subdomain or www prefix.">
-			</field>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_bfgoogleanalytics.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_bfgoogleanalytics.sys.ini</language>
+	</languages>
 
-			<field name="multiTopLevel" 
-        default="0"
-  			type="radio"
-	  		class="btn-group"
-				label="Multiple top-level domains"
-				description="Enable if your site accessed through multiple top-level domains.">
-				<option value="0">JOFF</option>
-				<option value="1">JON</option>
-			</field>
+	<config>
+		<fields name="params">
+			<fieldset name="basic"
+			          addfieldpath="plugins/system/bfgoogleanalytics/fields">
+				<field name="trackingcode" type="htmltextarea"
+							 rows="10" cols="80"
+							 label="PLG_BFGOOGLEANALYTICS_TRACKINGCODE_LABEL"
+							 description=""
+							 filter="raw"
+							 class="input-xxlarge" />
+			</fieldset>
 
-			<field name="javascriptPosition" type="list" default="body"
-				label="Google code position"
-				description="Position at either end of header or body.">
-				<option value="body">End of body</option>
-				<option value="head">End of header</option>
-				<option value="SPLIT">Split into header / body</option>
-			</field>
+			<fieldset name="advanced">
+				<field name="showInDevelopment"
+							 default="0"
+							 type="radio"
+							 class="btn-group"
+							 label="PLG_BFGOOGLEANALYTICS_SHOWINDEVELOPMENT_LABEL"
+							 description="PLG_BFGOOGLEANALYTICS_SHOWINDEVELOPMENT_DESC">
+					<option value="0">JOFF</option>
+					<option value="1">JON</option>
+				</field>
 
-			<field name="showInDevelopment"
-        default="0"
-  			type="radio"
-	  		class="btn-group"
-				label="In Development / Test"
-				description="Enable in development / test environments.">
-				<option value="0">JOFF</option>
-				<option value="1">JON</option>
-			</field>
+				<field name="showInAdmin"
+							 default="0"
+							 type="radio"
+							 class="btn-group"
+							 label="PLG_BFGOOGLEANALYTICS_SHOWINADMIN_LABEL"
+							 description="PLG_BFGOOGLEANALYTICS_SHOWINADMIN_DESC">
+					<option value="0">JOFF</option>
+					<option value="1">JON</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
 
-			<field name="showInAdmin"
-        default="0"
-  			type="radio"
-	  		class="btn-group"
-				label="In Admin"
-				description="Enable in administration screens.">
-				<option value="0">JOFF</option>
-				<option value="1">JON</option>
-			</field>
-
-      <field name="ip_block_list" type="textarea" 
-             rows="3" cols="80"
-             default="" 
-             label="IP(s) Disable List" 
-             description="Add the IP(s) you don't want to collect analytics for to the IP(s) Disable list.
-Separate each IP with comma (,) or space. Regular expression 'preg' match patterns can be used (e.g. '192\..*')." />
-    </fieldset>
-
-    <fieldset name="advanced">
-      <field name="php_condition" type="textarea" rows="8" cols="50"
-             default=""
-             label="PHP Condition"
-             description="Define a PHP condition which returns 1 if plugin is to operate.&lt;br /&gt;
-E.G. isset($_REQUEST['myvar]')" />
-
-			<field name="targetDomain" type="text" default=""
-				label="Target Domain"
-				description="If you have a live site and a development site enter the domain
-of the live site here. This will allow you to copy code / database between development and live
-without having to publish / unpublish this plugin every time. Do not include the 'www.' prefix.">
-			</field>
-    </fieldset>
-    </fields>
-  </config>
-
-  <updateservers>
-      <server type="extension" priority="1" name="System - Google Analytics by BrainforgeUK">
-				https://brainforge.co.uk/component/bfupdater?element=plg_system_bfgoogleanalytics.xml
-			</server>
-  </updateservers>
+	<updateservers>
+		<server type="extension" priority="1" name="System - Google Analytics by BrainforgeUK">
+			https://brainforge.co.uk/component/bfupdater?element=plg_system_bfgoogleanalytics.xml
+		</server>
+	</updateservers>
 </extension>
