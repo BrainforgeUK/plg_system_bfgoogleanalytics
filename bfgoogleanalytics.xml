@@ -17,17 +17,15 @@
 	<version>4.0.2</version>
 	<description>PLG_SYSTEM_BFGOOGLEANALYTICS_XML_DESCRIPTION</description>
 
+	<scriptfile>script.php</scriptfile>
+
 	<files>
 		<filename plugin="bfgoogleanalytics">bfgoogleanalytics.php</filename>
 		<filename>bfgoogleanalytics.xml</filename>
 		<folder>fields</folder>
 		<folder>images</folder>
+		<folder>language</folder>
 	</files>
-
-	<languages>
-		<language tag="en-GB">language/en-GB/en-GB.plg_system_bfgoogleanalytics.ini</language>
-		<language tag="en-GB">language/en-GB/en-GB.plg_system_bfgoogleanalytics.sys.ini</language>
-	</languages>
 
 	<config>
 		<fields name="params">
