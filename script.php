@@ -50,7 +50,6 @@ class plgSystemBFGoogleAnalyticsInstallerScript
 	{
 		// Tidyup language files left over from earlier version
 		if (!is_dir(JPATH_SITE . '/plugins/system/bfgoogleanalytics/language')) {
-			@unlink(JPATH_SITE . '/language/en-GB/en-GB.bfgoogleanalytics.ini');
 			@unlink(JPATH_ADMINISTRATOR . '/language/en-GB/en-GB.bfgoogleanalytics.ini');
 			@unlink(JPATH_ADMINISTRATOR . '/language/en-GB/en-GB.bfgoogleanalytics.sys.ini');
 		}
