@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-* @package   Plugin for adding Google Analytics to site.
-* @version   0.0.1
-* @author    http://www.brainforge.co.uk
-* @copyright Copyright (C) 2011-2018 Jonathan Brain. All rights reserved.
-* @license	 GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
--->
 <extension type="plugin" version="1.6.0" group="system" method="upgrade">
 	<name>PLG_SYSTEM_BFGOOGLEANALYTICS</name>
 	<creationDate>13 December 2011</creationDate>
+	<version>5.0.0</version>
 	<author>Jonathan Brain</author>
 	<authorEmail>brainforge@btinternet.com</authorEmail>
 	<authorUrl>http://www.brainforge.co.uk</authorUrl>
-	<copyright>Copyright 2011-2018 Jonathan Brain. All rights reserved.</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>4.0.2</version>
+	<copyright>Copyright 2011-2021 Jonathan Brain. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<description>PLG_SYSTEM_BFGOOGLEANALYTICS_XML_DESCRIPTION</description>
-
-	<scriptfile>script.php</scriptfile>
 
 	<files>
 		<filename plugin="bfgoogleanalytics">bfgoogleanalytics.php</filename>
 		<filename>bfgoogleanalytics.xml</filename>
-		<folder>fields</folder>
-		<folder>images</folder>
 		<folder>language</folder>
 	</files>
 
@@ -31,31 +20,47 @@
 		<fields name="params">
 			<fieldset name="basic"
 			          addfieldpath="plugins/system/bfgoogleanalytics/fields">
-				<field name="trackingcode" type="htmltextarea"
-							 rows="10" cols="80"
-							 label="PLG_BFGOOGLEANALYTICS_TRACKINGCODE_LABEL"
-							 description=""
-							 filter="raw"
-							 class="input-xxlarge" />
+				<field
+					name="trackingcodes"
+					type="subform"
+					label="PLG_BFGOOGLEANALYTICS_TRACKINGCODES_LABEL"
+					layout="joomla.form.field.subform.repeatable-table"
+					description="PLG_BFGOOGLEANALYTICS_TRACKINGCODES_DESC"
+					multiple="true"
+					min="1"
+					max="10"
+				>
+					<form>
+						<field
+							name="measurementid"
+							type="text"
+							label="PLG_BFGOOGLEANALYTICS_MEASUREMENTID_LABEL"
+							hint="UA-00000000-0"
+							default="UA-00000000-0"
+							required="true"
+						/>
+					</form>
+				</field>
 			</fieldset>
 
 			<fieldset name="advanced">
 				<field name="showInDevelopment"
-							 default="0"
-							 type="radio"
-							 class="btn-group"
-							 label="PLG_BFGOOGLEANALYTICS_SHOWINDEVELOPMENT_LABEL"
-							 description="PLG_BFGOOGLEANALYTICS_SHOWINDEVELOPMENT_DESC">
+					   type="radio"
+					   layout="joomla.form.field.radio.switcher"
+					   default="0"
+					   label="PLG_BFGOOGLEANALYTICS_SHOWINDEVELOPMENT_LABEL"
+					   description="PLG_BFGOOGLEANALYTICS_SHOWINDEVELOPMENT_DESC"
+				>
 					<option value="0">JOFF</option>
 					<option value="1">JON</option>
 				</field>
 
 				<field name="showInAdmin"
-							 default="0"
-							 type="radio"
-							 class="btn-group"
-							 label="PLG_BFGOOGLEANALYTICS_SHOWINADMIN_LABEL"
-							 description="PLG_BFGOOGLEANALYTICS_SHOWINADMIN_DESC">
+					   type="radio"
+					   layout="joomla.form.field.radio.switcher"
+					   default="0"
+					   label="PLG_BFGOOGLEANALYTICS_SHOWINADMIN_LABEL"
+					   description="PLG_BFGOOGLEANALYTICS_SHOWINADMIN_DESC">
 					<option value="0">JOFF</option>
 					<option value="1">JON</option>
 				</field>
