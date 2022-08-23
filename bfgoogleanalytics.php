@@ -3,7 +3,7 @@
  * @package   Plugin for adding Google Analytics to site.
  * @version   0.0.1
  * @author    https://www.brainforge.co.uk
- * @copyright Copyright (C) 2011-2021 Jonathan Brain. All rights reserved.
+ * @copyright Copyright (C) 2011-2022 Jonathan Brain. All rights reserved.
  * @license	 GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 
@@ -30,7 +30,7 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 		if (!empty($this->trackingcodes))
 		{
 			$this->measurementID0 = trim(reset($this->trackingcodes)->measurementid);
-			if (!preg_match('/^UA-[0-9]{8}-[0-9]$/', $this->measurementID0))
+			if (!preg_match('/^UA-[0-9]{7,8}-[0-9]$/', $this->measurementID0))
 			{
 				$this->measurementID0 = null;
 			}
@@ -41,8 +41,6 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 	 */
 	function onBeforeRender()
 	{
-
-
 		if (empty($this->measurementID0) || $this->measurementID0 == 'UA-00000000-0')
 		{
 			if($this->application->isClient('administrator'))
