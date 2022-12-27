@@ -100,6 +100,7 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag(\'js\', new Date());
 ';
 
 		foreach($this->trackingcodes as $trackingcode)
