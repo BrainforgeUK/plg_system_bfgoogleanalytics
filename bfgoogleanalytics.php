@@ -7,6 +7,8 @@
  * @license	 GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 use Joomla\CMS\Plugin\CMSPlugin;
 
 // no direct access
@@ -24,13 +26,13 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 	{
 		parent::__construct($subject, $config);
 
-		$this->application = JFactory::getApplication();
+		$this->application = Factory::getApplication();
 
 		$this->trackingcodes = (array)$this->params->get('trackingcodes', array());
 		if (!empty($this->trackingcodes))
 		{
 			$this->measurementID0 = trim(reset($this->trackingcodes)->measurementid);
-			if (!preg_match('/^UA-[0-9]{7,8}-[0-9]$/', $this->measurementID0))
+			if (!preg_match('/^UA-[0-9]{6,9}-[0-9]+$/', $this->measurementID0))
 			{
 				$this->measurementID0 = null;
 			}
@@ -45,8 +47,8 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 		{
 			if($this->application->isClient('administrator'))
 			{
-				$this->application->getLanguage()->load('plg_system_bfgoogleanalytics');
-				$this->application->enqueueMessage(JText::_('PLG_BFGOOGLEANALYTICS_TRACKINGCODE_ERROR'), 'warning');
+				$this->application->getLanguage()->load('plg_system_bfgoogleanalytics.sys', __DIR__);
+				$this->application->enqueueMessage(Text::_('PLG_BFGOOGLEANALYTICS_TRACKINGCODE_ERROR'), 'warning');
 			}
 			$this->trackingcodes = null;
 		}
