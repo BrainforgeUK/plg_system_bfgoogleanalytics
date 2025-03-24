@@ -2,11 +2,11 @@
 <extension type="plugin" version="1.6.0" group="system" method="upgrade">
 	<name>PLG_SYSTEM_BFGOOGLEANALYTICS</name>
 	<creationDate>13 December 2011</creationDate>
-	<version>5.0.3</version>
+	<version>6.0.0</version>
 	<author>Jonathan Brain</author>
 	<authorEmail>brainforge@btinternet.com</authorEmail>
 	<authorUrl>http://www.brainforge.co.uk</authorUrl>
-	<copyright>Copyright 2011-2022 Jonathan Brain. All rights reserved.</copyright>
+	<copyright>Copyright 2011-2025 Jonathan Brain. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<description>PLG_SYSTEM_BFGOOGLEANALYTICS_XML_DESCRIPTION</description>
 
