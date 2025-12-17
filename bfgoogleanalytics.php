@@ -32,7 +32,7 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 		if (!empty($this->trackingcodes))
 		{
 			$this->measurementID0 = trim(reset($this->trackingcodes)->measurementid);
-			if (!preg_match('/^UA-[0-9]{6,9}-[0-9]+$/', $this->measurementID0))
+			if (!preg_match('/^[A-Z]+[-A-Za-z0-9]+$/', $this->measurementID0))
 			{
 				$this->measurementID0 = null;
 			}

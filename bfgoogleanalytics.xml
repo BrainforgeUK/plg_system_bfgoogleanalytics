@@ -2,7 +2,7 @@
 <extension type="plugin" version="1.6.0" group="system" method="upgrade">
 	<name>PLG_SYSTEM_BFGOOGLEANALYTICS</name>
 	<creationDate>13 December 2011</creationDate>
-	<version>6.0.0</version>
+	<version>7.0.0</version>
 	<author>Jonathan Brain</author>
 	<authorEmail>brainforge@btinternet.com</authorEmail>
 	<authorUrl>http://www.brainforge.co.uk</authorUrl>
@@ -35,8 +35,7 @@
 							name="measurementid"
 							type="text"
 							label="PLG_BFGOOGLEANALYTICS_MEASUREMENTID_LABEL"
-							hint="UA-00000000-0"
-							default="UA-00000000-0"
+							default=""
 							required="true"
 						/>
 					</form>
