@@ -48,7 +48,7 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 			if($this->application->isClient('administrator'))
 			{
 				$this->application->getLanguage()->load('plg_system_bfgoogleanalytics.sys', __DIR__);
-				$this->application->enqueueMessage(Text::_('PLG_BFGOOGLEANALYTICS_TRACKINGCODE_ERROR'), 'warning');
+				$this->application->enqueueMessage(Text::_('PLG_SYSTEM_BFGOOGLEANALYTICS_TRACKINGCODE_ERROR'), 'warning');
 			}
 			$this->trackingcodes = null;
 		}
