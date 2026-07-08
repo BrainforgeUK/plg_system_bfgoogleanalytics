@@ -3,7 +3,7 @@
  * @package   Plugin for adding Google Analytics to site.
  * @version   0.0.1
  * @author    https://www.brainforge.co.uk
- * @copyright Copyright (C) 2011-2022 Jonathan Brain. All rights reserved.
+ * @copyright Copyright (C) 2011-2026 Jonathan Brain. All rights reserved.
  * @license	 GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 
@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
 
 class plgSystemBFGoogleAnalytics extends CMSPlugin
 {
-	protected $application;
+	protected $app;
 	protected $trackingcodes;
 	protected $measurementID0;
 
@@ -26,7 +26,7 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 	{
 		parent::__construct($subject, $config);
 
-		$this->application = Factory::getApplication();
+		$this->app = Factory::getApplication();
 
 		$this->trackingcodes = (array)$this->params->get('trackingcodes', array());
 		if (!empty($this->trackingcodes))
@@ -45,12 +45,22 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 	{
 		if (empty($this->measurementID0) || $this->measurementID0 == 'UA-00000000-0')
 		{
-			if($this->application->isClient('administrator'))
-			{
-				$this->application->getLanguage()->load('plg_system_bfgoogleanalytics.sys', __DIR__);
-				$this->application->enqueueMessage(Text::_('PLG_SYSTEM_BFGOOGLEANALYTICS_TRACKINGCODE_ERROR'), 'warning');
-			}
 			$this->trackingcodes = null;
+
+			if($this->app->isClient('administrator'))
+			{
+				switch($this->app->getInput()->getCmd('option'))
+				{
+					case 'com_cpanel':
+					case 'com_installer':
+					case 'com_plugins':
+						$this->app->getLanguage()->load('plg_system_bfgoogleanalytics.sys', __DIR__);
+						$this->app->enqueueMessage(Text::_('PLG_SYSTEM_BFGOOGLEANALYTICS_TRACKINGCODE_ERROR'), 'warning');
+						break;
+					default:
+						break;
+				}
+			}
 		}
 	}
 
@@ -62,14 +72,14 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 			return;
 		}
 
-		if ($this->application->isClient('administrator'))
+		if ($this->app->isClient('administrator'))
 		{
 			if ($this->params->get('showInAdmin') != '1')
 			{
 				return;
 			}
 		}
-		else if (!$this->application->isClient('site'))
+		else if (!$this->app->isClient('site'))
 		{
 			return;
 		}
@@ -112,7 +122,7 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 
 		$gaCode .= "</script>\n";
 
-		$buffer = $this->application->getBody();
+		$buffer = $this->app->getBody();
 
 		$pos = stripos($buffer, '<head');
 		if ($pos === false) return;
@@ -122,7 +132,7 @@ class plgSystemBFGoogleAnalytics extends CMSPlugin
 
 		$buffer = substr($buffer, 0, $pos) . $gaCode . substr($buffer, $pos);
 
-		$this->application->setBody($buffer);
+		$this->app->setBody($buffer);
 	}
 }
 ?>
